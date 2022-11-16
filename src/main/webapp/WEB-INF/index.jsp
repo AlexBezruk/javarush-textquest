@@ -3,7 +3,7 @@
 <html lang="ru">
 <head>
     <title>Страница приветствия</title>
-    <link href="css/main.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet">
 </head>
 <body>
 <h1>Пролог</h1>
@@ -23,7 +23,7 @@
     а фотографирует его Сергей Стальная Пятка - наш навигатор. <br>
     А как обращаться к вам?
 </p>
-<form action="/initial">
+<form action="${pageContext.request.contextPath}/initial">
     <label for="name"></label>
     <input type="text" id="name" name="name" required size="20" maxlength="20">
     <button type="submit">Представиться</button>
