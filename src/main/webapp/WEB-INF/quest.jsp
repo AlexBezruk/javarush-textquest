@@ -2,12 +2,10 @@
 <html>
 <head>
     <title>Текстовый квест</title>
-    <link href="${pageContext.request.serverName}/css/main.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet">
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 </head>
 <body>
-
-
 <h1>${currentQuestion.getText()}</h1>
 
 <c:if test="${currentQuestion.isWin() || currentQuestion.isLoose()}">
@@ -27,15 +25,12 @@
     </form>
 </c:if>
 
-
 <div>
     <br><br><br><br><br><br><br><br><br><br>
     Статистика:<br>
-    IP address: ${ip} <br>
+    IP address: ${pageContext.getRequest().getRemoteAddr()} <br>
     Имя в игре: ${name} <br>
     Количество игр: ${count}
 </div>
-
-
 </body>
 </html>

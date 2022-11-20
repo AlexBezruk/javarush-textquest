@@ -15,4 +15,3 @@ public class Question {
     boolean isWin;
     boolean isLoose;
 }
-

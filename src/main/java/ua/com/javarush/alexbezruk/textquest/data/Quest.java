@@ -4,15 +4,15 @@ import java.util.List;
 
 public class Quest {
     Question q1 = Question.builder()
-            .text("Тебя разоблачили. Ты проиграл!")
+            .text("Твою ложь разоблачили. Поражение")
             .isLoose(true)
             .build();
     Question q2 = Question.builder()
-            .text("Ты не пошел на переговоры. Это провал и поражение!")
+            .text("Ты не пошел на переговоры. Поражение")
             .isLoose(true)
             .build();
     Question q3 = Question.builder()
-            .text("Твою ложи разоблачили. Прощай!")
+            .text("Ты отклонил вызов. Поражение")
             .isLoose(true)
             .build();
     Question q4 = Question.builder()
@@ -23,37 +23,36 @@ public class Quest {
             .text("Ты поднялся на мостик. Ты кто?")
             .answers(List.of(
                     Answer.builder()
-                            .text("Солгать о себе")
-                            .nextQuestion(this.q3)
+                            .text("Рассказать правду о себе")
+                            .nextQuestion(q4)
                             .build(),
                     Answer.builder()
-                            .text("Рассказать правду о себе")
-                            .nextQuestion(this.q4)
+                            .text("Солгать о себе")
+                            .nextQuestion(q1)
                             .build()))
             .build();
     Question q6 = Question.builder()
             .text("Ты принял вызов. Поднимаешься на мостик к капитану?")
             .answers(List.of(
                     Answer.builder()
-                            .text("Отказаться")
-                            .nextQuestion(this.q2)
+                            .text("Подняться на мостик")
+                            .nextQuestion(q5)
                             .build(),
                     Answer.builder()
-                            .text("Подняться")
-                            .nextQuestion(this.q5)
+                            .text("Отказаться подниматься на мостик")
+                            .nextQuestion(q2)
                             .build()))
             .build();
-    ;
     Question q7 = Question.builder()
             .text("Ты потерял память. Принять вызов НЛО?")
             .answers(List.of(
                     Answer.builder()
-                            .text("Отклонить вызов")
-                            .nextQuestion(this.q1)
+                            .text("Принять вызов")
+                            .nextQuestion(q6)
                             .build(),
                     Answer.builder()
-                            .text("Принять вызов")
-                            .nextQuestion(this.q6)
+                            .text("Отклонить вызов")
+                            .nextQuestion(q3)
                             .build()))
             .build();
 
@@ -61,4 +60,3 @@ public class Quest {
         return this.q7;
     }
 }
-
