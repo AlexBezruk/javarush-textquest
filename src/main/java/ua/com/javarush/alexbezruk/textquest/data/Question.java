@@ -9,6 +9,7 @@ import java.util.List;
 @Builder
 public class Question {
     String text;
+    String img;
 
     @Builder.Default
     List<Answer> answers = List.of();

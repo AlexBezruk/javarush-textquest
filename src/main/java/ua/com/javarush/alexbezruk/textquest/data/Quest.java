@@ -5,22 +5,27 @@ import java.util.List;
 public class Quest {
     Question q1 = Question.builder()
             .text("Твою ложь разоблачили. Поражение")
+            .img("game_over.jpg")
             .isLoose(true)
             .build();
     Question q2 = Question.builder()
             .text("Ты не пошел на переговоры. Поражение")
+            .img("game_over.jpg")
             .isLoose(true)
             .build();
     Question q3 = Question.builder()
             .text("Ты отклонил вызов. Поражение")
+            .img("game_over.jpg")
             .isLoose(true)
             .build();
     Question q4 = Question.builder()
             .text("Тебя вернули домой. Победа!")
+            .img("victory.jpg")
             .isWin(true)
             .build();
     Question q5 = Question.builder()
             .text("Ты поднялся на мостик. Ты кто?")
+            .img("true_or_false.jpg")
             .answers(List.of(
                     Answer.builder()
                             .text("Рассказать правду о себе")
@@ -33,6 +38,7 @@ public class Quest {
             .build();
     Question q6 = Question.builder()
             .text("Ты принял вызов. Поднимаешься на мостик к капитану?")
+            .img("bridge_of_ship.jpg")
             .answers(List.of(
                     Answer.builder()
                             .text("Подняться на мостик")
@@ -45,6 +51,7 @@ public class Quest {
             .build();
     Question q7 = Question.builder()
             .text("Ты потерял память. Принять вызов НЛО?")
+            .img("ufo.jpg")
             .answers(List.of(
                     Answer.builder()
                             .text("Принять вызов")
