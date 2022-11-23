@@ -64,6 +64,6 @@ public class Quest {
             .build();
 
     public Question getInitialQuestion() {
-        return this.q7;
+        return q7;
     }
 }

@@ -26,7 +26,7 @@
             А как обращаться к вам?
         </p>
         <br>
-        <form action="${pageContext.request.contextPath}/initial">
+        <form action="${pageContext.request.contextPath}/initial" method="post">
             <label for="name"></label>
             <input type="text" id="name" name="name" required size="20" maxlength="20">
             <button type="submit" class="btn btn-success">Представиться</button>

@@ -18,7 +18,7 @@
         </c:if>
 
         <c:if test="${!currentQuestion.isWin() && !currentQuestion.isLoose()}">
-            <form  action="${pageContext.request.contextPath}/quest">
+            <form  action="${pageContext.request.contextPath}/quest" method="post">
                 <c:forEach var="i" begin="1" end="${currentQuestion.getAnswers().size()}">
                     <input class="ms-3 me-1" type="radio" name="numberAnswer"
                            value="${i - 1}"/>${currentQuestion.getAnswers().get(i - 1).getText()}
@@ -33,7 +33,8 @@
     </div>
     <footer>
         <p>
-            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
                 Статистика
             </button>
         </p>

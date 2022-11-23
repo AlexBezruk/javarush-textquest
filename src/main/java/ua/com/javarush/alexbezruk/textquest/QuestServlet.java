@@ -13,21 +13,28 @@ import ua.com.javarush.alexbezruk.textquest.data.UserRepository;
 
 @WebServlet(name = "questServlet", value = "/quest")
 public class QuestServlet extends HttpServlet {
+    private UserRepository userRepository;
+
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void init() {
+        userRepository = (UserRepository) getServletContext().getAttribute("userRepository");
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession currentSession = request.getSession();
+
         if (request.getParameter("numberAnswer") != null) {
             int number = Integer.parseInt(request.getParameter("numberAnswer"));
             Question currentQuestion = (Question)currentSession.getAttribute("currentQuestion");
             currentQuestion = (currentQuestion.getAnswers().get(number)).getNextQuestion();
             currentSession.setAttribute("currentQuestion", currentQuestion);
+
             if (currentQuestion.isWin() || currentQuestion.isLoose()) {
                 int count = (Integer)currentSession.getAttribute("count");
                 currentSession.setAttribute("count", count + 1);
 
                 String name = (String) currentSession.getAttribute("name");
-                UserRepository userRepository = (UserRepository) getServletContext().getAttribute("userRepository");
-
                 User user = userRepository.fetchByName(name);
                 user.setGamesNumber((Integer) currentSession.getAttribute("count"));
                 userRepository.save(user);
