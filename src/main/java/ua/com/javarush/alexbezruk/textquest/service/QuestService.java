@@ -28,9 +28,15 @@ public class QuestService {
             throw new GameException("numberAnswer is not number", e);
         }
 
-        Question nextQuestion = currentQuestion.getAnswers().get(index).getNextQuestion();
+        if (index < 0) {
+            throw new GameException("response number < 0");
+        }
 
-        return nextQuestion;
+        if (index >= currentQuestion.getAnswers().size()) {
+            throw new GameException("response number >= number of responses");
+        }
+
+        return currentQuestion.getAnswers().get(index).getNextQuestion();
     }
 
     public int upgradeStatistics(String name) {
