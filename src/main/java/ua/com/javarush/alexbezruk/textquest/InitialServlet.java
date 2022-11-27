@@ -10,33 +10,26 @@ import javax.servlet.http.HttpSession;
 import ua.com.javarush.alexbezruk.textquest.data.Quest;
 import ua.com.javarush.alexbezruk.textquest.data.Question;
 import ua.com.javarush.alexbezruk.textquest.data.User;
-import ua.com.javarush.alexbezruk.textquest.data.UserRepository;
+import ua.com.javarush.alexbezruk.textquest.service.InitialService;
 
 @WebServlet(name = "initialServlet", value = "/initial")
 public class InitialServlet extends HttpServlet {
-    private UserRepository userRepository;
     private Question currentQuestion;
+    private InitialService initialService;
 
     @Override
     public void init() {
-        userRepository = (UserRepository) getServletContext().getAttribute("userRepository");
         currentQuestion = new Quest().getInitialQuestion();
+        initialService = (InitialService) getServletContext().getAttribute("initialService");
     }
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession currentSession = request.getSession();
         currentSession.setAttribute("currentQuestion", currentQuestion);
-        User user;
 
         String name = request.getParameter("name");
-
-        if (userRepository.isExists(name)) {
-            user = userRepository.fetchByName(name);
-        } else {
-            user = new User(name, 0);
-            userRepository.save(user);
-        }
+        User user = initialService.initOrCreateUser(name);
 
         currentSession.setAttribute("name", name);
         currentSession.setAttribute("count", user.getGamesNumber());

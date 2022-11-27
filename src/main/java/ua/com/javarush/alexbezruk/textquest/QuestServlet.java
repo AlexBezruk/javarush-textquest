@@ -10,14 +10,15 @@ import javax.servlet.http.HttpSession;
 import ua.com.javarush.alexbezruk.textquest.data.Question;
 import ua.com.javarush.alexbezruk.textquest.data.User;
 import ua.com.javarush.alexbezruk.textquest.data.UserRepository;
+import ua.com.javarush.alexbezruk.textquest.service.QuestService;
 
 @WebServlet(name = "questServlet", value = "/quest")
 public class QuestServlet extends HttpServlet {
-    private UserRepository userRepository;
+    private QuestService questService;
 
     @Override
     public void init() {
-        userRepository = (UserRepository) getServletContext().getAttribute("userRepository");
+        questService = (QuestService) getServletContext().getAttribute("questService");
     }
 
     @Override
@@ -25,19 +26,19 @@ public class QuestServlet extends HttpServlet {
         HttpSession currentSession = request.getSession();
 
         if (request.getParameter("numberAnswer") != null) {
-            int number = Integer.parseInt(request.getParameter("numberAnswer"));
             Question currentQuestion = (Question)currentSession.getAttribute("currentQuestion");
-            currentQuestion = (currentQuestion.getAnswers().get(number)).getNextQuestion();
+            String numberAnswer = request.getParameter("numberAnswer");
+
+            currentQuestion = questService.nextQuestion(currentQuestion, numberAnswer);
+
             currentSession.setAttribute("currentQuestion", currentQuestion);
 
             if (currentQuestion.isWin() || currentQuestion.isLoose()) {
-                int count = (Integer)currentSession.getAttribute("count");
-                currentSession.setAttribute("count", count + 1);
-
                 String name = (String) currentSession.getAttribute("name");
-                User user = userRepository.fetchByName(name);
-                user.setGamesNumber((Integer) currentSession.getAttribute("count"));
-                userRepository.save(user);
+
+                int gamesNumber = questService.upgradeStatistics(name);
+
+                currentSession.setAttribute("count", gamesNumber);
             }
         }
 
