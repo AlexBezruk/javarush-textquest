@@ -14,7 +14,7 @@ class QuestTest {
     }
 
     @Test
-    void getInitialQuestion() {
+    void test_getInitialQuestion() {
         String expected = "Ты потерял память. Принять вызов НЛО?";
         String actual = quest.getInitialQuestion().getText();
 
