@@ -1,5 +1,6 @@
 package ua.com.javarush.alexbezruk.textquest;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +10,11 @@ import java.io.IOException;
 
 @WebServlet(name = "indexServlet", value = "")
 public class IndexServlet extends HttpServlet {
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         getServletContext()

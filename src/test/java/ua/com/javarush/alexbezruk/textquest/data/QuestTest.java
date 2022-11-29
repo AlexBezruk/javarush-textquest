@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class QuestTest {
     private Quest quest;
+    private static final String INITIAL_QUESTION = "Ты потерял память. Принять вызов НЛО?";
 
     @BeforeEach
     void setup() {
@@ -15,7 +16,7 @@ class QuestTest {
 
     @Test
     void test_getInitialQuestion() {
-        String expected = "Ты потерял память. Принять вызов НЛО?";
+        String expected = INITIAL_QUESTION;
         String actual = quest.getInitialQuestion().getText();
 
         assertEquals(expected, actual);

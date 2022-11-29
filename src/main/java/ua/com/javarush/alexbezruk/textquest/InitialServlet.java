@@ -1,6 +1,7 @@
 package ua.com.javarush.alexbezruk.textquest;
 
 import java.io.IOException;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,14 +19,16 @@ public class InitialServlet extends HttpServlet {
     private InitialService initialService;
 
     @Override
-    public void init() {
-        currentQuestion = new Quest().getInitialQuestion();
-        initialService = (InitialService) getServletContext().getAttribute("initialService");
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        initialService = (InitialService) config.getServletContext().getAttribute("initialService");
     }
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession currentSession = request.getSession();
+
+        currentQuestion = initialService.getInitialQuestion();
         currentSession.setAttribute("currentQuestion", currentQuestion);
 
         String name = request.getParameter("name");

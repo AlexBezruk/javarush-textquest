@@ -1,5 +1,7 @@
 package ua.com.javarush.alexbezruk.textquest.service;
 
+import ua.com.javarush.alexbezruk.textquest.data.Quest;
+import ua.com.javarush.alexbezruk.textquest.data.Question;
 import ua.com.javarush.alexbezruk.textquest.data.User;
 import ua.com.javarush.alexbezruk.textquest.data.UserRepository;
 import ua.com.javarush.alexbezruk.textquest.service.exception.GameException;
@@ -25,5 +27,10 @@ public class InitialService {
         }
 
         return user;
+    }
+
+    public Question getInitialQuestion() {
+        Quest quest = new Quest();
+        return quest.getInitialQuestion();
     }
 }
