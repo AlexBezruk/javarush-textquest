@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import ua.com.javarush.alexbezruk.textquest.data.Quest;
 import ua.com.javarush.alexbezruk.textquest.data.Question;
 import ua.com.javarush.alexbezruk.textquest.data.User;
 import ua.com.javarush.alexbezruk.textquest.service.InitialService;
@@ -22,13 +21,13 @@ public class InitialServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         initialService = (InitialService) config.getServletContext().getAttribute("initialService");
+        currentQuestion = (Question) config.getServletContext().getAttribute("initialQuestion");
     }
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession currentSession = request.getSession();
 
-        currentQuestion = initialService.getInitialQuestion();
         currentSession.setAttribute("currentQuestion", currentQuestion);
 
         String name = request.getParameter("name");

@@ -64,6 +64,15 @@ class QuestServletTest {
     }
 
     @Test
+    void test_doPost_numberAnswerIsNull() throws ServletException, IOException {
+        when(request.getParameter("numberAnswer")).thenReturn(null);
+        questServlet.doPost(request, response);
+
+        verify(request, never()).getSession();
+        verify(requestDispatcher, times(1)).forward(request, response);
+    }
+
+    @Test
     void test_doPost_notWinAndNotLoose() throws ServletException, IOException {
         when(request.getSession()).thenReturn(session);
         when(session.getAttribute("currentQuestion")).thenReturn(question);
@@ -73,6 +82,8 @@ class QuestServletTest {
         questServlet.doPost(request, response);
 
         verify(session, times(1)).setAttribute("currentQuestion", currentQuestion);
+        verify(session, never()).getAttribute("name");
+        verify(requestDispatcher, times(1)).forward(request, response);
     }
 
     @Test
@@ -90,6 +101,7 @@ class QuestServletTest {
 
         verify(session, times(1)).setAttribute("currentQuestion", currentQuestion);
         verify(session, times(1)).setAttribute("count", 3);
+        verify(requestDispatcher, times(1)).forward(request, response);
     }
 
     @Test
@@ -107,5 +119,6 @@ class QuestServletTest {
 
         verify(session, times(1)).setAttribute("currentQuestion", currentQuestion);
         verify(session, times(1)).setAttribute("count", 3);
+        verify(requestDispatcher, times(1)).forward(request, response);
     }
 }

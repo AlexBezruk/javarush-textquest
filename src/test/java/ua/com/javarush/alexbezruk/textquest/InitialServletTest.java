@@ -58,7 +58,8 @@ class InitialServletTest {
     void setup() throws ServletException {
         when(servletConfig.getServletContext()).thenReturn(servletContext);
         when(servletContext.getRequestDispatcher(path)).thenReturn(requestDispatcher);
-        when(servletContext.getAttribute(eq("initialService"))).thenReturn(initialService);
+        when(servletContext.getAttribute("initialService")).thenReturn(initialService);
+        when(servletContext.getAttribute("initialQuestion")).thenReturn(question);
 
         initialServlet = new InitialServlet();
         initialServlet.init(servletConfig);
@@ -67,7 +68,6 @@ class InitialServletTest {
     @Test
     void test_doPost() throws ServletException, IOException {
         when(request.getSession()).thenReturn(session);
-        when(initialService.getInitialQuestion()).thenReturn(question);
         when(request.getParameter("name")).thenReturn("Sasha");
         when(initialService.initOrCreateUser("Sasha")).thenReturn(user);
         when(user.getGamesNumber()).thenReturn(3);

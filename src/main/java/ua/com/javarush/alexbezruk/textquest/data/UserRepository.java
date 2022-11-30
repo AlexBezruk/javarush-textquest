@@ -2,7 +2,6 @@ package ua.com.javarush.alexbezruk.textquest.data;
 
 import ua.com.javarush.alexbezruk.textquest.service.exception.GameException;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class UserRepository {
