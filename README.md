@@ -2,7 +2,7 @@
 Небольшой текстовый квест
 
 # Запуск проекта:
-Запусти приложение out/artifacts/textquest-1.0-SNAPSHOT.war
+Запусти приложение out/artifacts/ROOT.war
 
 # Исходные значения
 Логика вопросов и ответов находится в файле src/main/java/ua/com/javarush/alexbezruk/textquest/data/Quest.java
