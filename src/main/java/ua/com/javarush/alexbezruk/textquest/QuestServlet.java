@@ -8,11 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ua.com.javarush.alexbezruk.textquest.data.Question;
 import ua.com.javarush.alexbezruk.textquest.service.QuestService;
 
 @WebServlet(name = "questServlet", value = "/quest")
 public class QuestServlet extends HttpServlet {
+    private static final Logger LOGGER = LoggerFactory.getLogger(QuestServlet.class);
     private QuestService questService;
 
     @Override
@@ -39,9 +43,11 @@ public class QuestServlet extends HttpServlet {
                 int gamesNumber = questService.upgradeStatistics(name);
 
                 currentSession.setAttribute("count", gamesNumber);
+                LOGGER.debug("currentSession.setAttribute(count, {})", gamesNumber);
             }
         }
 
+        LOGGER.debug("start quest.jsp");
         getServletContext()
                 .getRequestDispatcher("/WEB-INF/quest.jsp")
                 .forward(request, response);
