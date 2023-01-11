@@ -2,7 +2,7 @@
 Небольшой текстовый квест
 
 # Запуск проекта:
-Запусти приложение out/artifacts/ROOT.war
+Запусти приложение out/artifacts/ROOT.war или перейди по ссылке https://text-quest.onrender.com
 
 # Исходные значения
 Логика вопросов и ответов находится в файле src/main/java/ua/com/javarush/alexbezruk/textquest/data/Quest.java
