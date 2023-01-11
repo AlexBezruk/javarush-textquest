@@ -3,27 +3,27 @@ package ua.com.javarush.alexbezruk.textquest.data;
 import java.util.List;
 
 public class Quest {
-    Question q1 = Question.builder()
+    private Question q1 = Question.builder()
             .text("Твою ложь разоблачили. Поражение")
             .img("game_over.jpg")
             .isLoose(true)
             .build();
-    Question q2 = Question.builder()
+    private Question q2 = Question.builder()
             .text("Ты не пошел на переговоры. Поражение")
             .img("game_over.jpg")
             .isLoose(true)
             .build();
-    Question q3 = Question.builder()
+    private Question q3 = Question.builder()
             .text("Ты отклонил вызов. Поражение")
             .img("game_over.jpg")
             .isLoose(true)
             .build();
-    Question q4 = Question.builder()
+    private Question q4 = Question.builder()
             .text("Тебя вернули домой. Победа!")
             .img("victory.jpg")
             .isWin(true)
             .build();
-    Question q5 = Question.builder()
+    private Question q5 = Question.builder()
             .text("Ты поднялся на мостик. Ты кто?")
             .img("true_or_false.jpg")
             .answers(List.of(
@@ -36,7 +36,7 @@ public class Quest {
                             .nextQuestion(q1)
                             .build()))
             .build();
-    Question q6 = Question.builder()
+    private Question q6 = Question.builder()
             .text("Ты принял вызов. Поднимаешься на мостик к капитану?")
             .img("bridge_of_ship.jpg")
             .answers(List.of(
@@ -49,7 +49,7 @@ public class Quest {
                             .nextQuestion(q2)
                             .build()))
             .build();
-    Question q7 = Question.builder()
+    private Question q7 = Question.builder()
             .text("Ты потерял память. Принять вызов НЛО?")
             .img("ufo.jpg")
             .answers(List.of(

@@ -1,7 +1,7 @@
 package ua.com.javarush.alexbezruk.textquest;
 
 import ua.com.javarush.alexbezruk.textquest.data.Quest;
-import ua.com.javarush.alexbezruk.textquest.data.UserRepository;
+import ua.com.javarush.alexbezruk.textquest.repository.UserRepository;
 import ua.com.javarush.alexbezruk.textquest.service.InitialService;
 import ua.com.javarush.alexbezruk.textquest.service.QuestService;
 

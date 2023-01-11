@@ -3,6 +3,7 @@ package ua.com.javarush.alexbezruk.textquest.data;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+import ua.com.javarush.alexbezruk.textquest.repository.UserRepository;
 import ua.com.javarush.alexbezruk.textquest.service.exception.GameException;
 
 import java.util.HashMap;

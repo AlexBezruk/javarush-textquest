@@ -6,6 +6,6 @@ import lombok.Getter;
 @Getter
 @Builder
 public class Answer {
-    String text;
-    Question nextQuestion;
+    private String text;
+    private Question nextQuestion;
 }

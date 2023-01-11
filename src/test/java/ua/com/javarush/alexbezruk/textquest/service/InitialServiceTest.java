@@ -4,10 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ua.com.javarush.alexbezruk.textquest.data.User;
-import ua.com.javarush.alexbezruk.textquest.data.UserRepository;
+import ua.com.javarush.alexbezruk.textquest.repository.UserRepository;
 import ua.com.javarush.alexbezruk.textquest.service.exception.GameException;
 
 import static org.junit.jupiter.api.Assertions.*;

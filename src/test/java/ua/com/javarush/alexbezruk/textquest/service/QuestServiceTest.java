@@ -8,7 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import ua.com.javarush.alexbezruk.textquest.data.Answer;
 import ua.com.javarush.alexbezruk.textquest.data.Question;
 import ua.com.javarush.alexbezruk.textquest.data.User;
-import ua.com.javarush.alexbezruk.textquest.data.UserRepository;
+import ua.com.javarush.alexbezruk.textquest.repository.UserRepository;
 import ua.com.javarush.alexbezruk.textquest.service.exception.GameException;
 
 import java.util.List;
